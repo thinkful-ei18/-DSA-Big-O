@@ -249,7 +249,6 @@ const decToBinary = num => {
 
 console.log(decToBinary(25));
 
-
 /* 
   O(n) it recursives n cases until it reach the base case
 */
@@ -260,8 +259,6 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 // console.log(factorial(5));
-
-
 
 /*
   
@@ -276,3 +273,84 @@ function fibonacci(num) {
 
 // console.log(fibonacci(4));
 
+/*
+  Anagrams
+O(n^2) Function is being looped n times with 
+recursive call taking place each iteration until 
+the base case is met. 
+*/
+const strArr = [];
+function anagrams(str, prefix) {
+  const end = str.length;
+  if (end === 0) return prefix;
+  for (let i = 0; i < end; i++) {
+    let word =
+      prefix + str.charAt(i) + str.substring(0, i) + str.substring(i + 1, end);
+    if (!strArr.includes(word)) {
+      strArr.push(word);
+    }
+    anagrams(
+      str.substring(0, i) + str.substring(i + 1, end),
+      prefix + str.charAt(i)
+    );
+  }
+}
+
+anagrams('east', '');
+console.log(strArr);
+
+const peopleHierarchy = [
+  { name: 'Zuckerberg', boss: null, indent: 0 },
+  { name: 'Schroepfer', boss: 'Zuckerberg', indent: 1 },
+  { name: 'Schrage', boss: 'Zuckerberg', indent: 1 },
+  { name: 'Sandberg', boss: 'Zuckerberg', indent: 1 },
+  { name: 'Bosworth', boss: 'Schroepfer', indent: 2 },
+  { name: 'Zhao', boss: 'Schroepfer', indent: 2 },
+  { name: 'VanDyck', boss: 'Schrage', indent: 2 },
+  { name: 'Swain', boss: 'Schrage', indent: 2 },
+  { name: 'Goler', boss: 'Sandberg', indent: 2 },
+  { name: 'Hernandez', boss: 'Sandberg', indent: 2 },
+  { name: 'Moissinac', boss: 'Sandberg', indent: 2 },
+  { name: 'Kelley', boss: 'Sandberg', indent: 2 },
+  { name: 'Steve', boss: 'Bosworth', indent: 3 },
+  { name: 'Kyle', boss: 'Bosworth', indent: 3 },
+  { name: 'Steve', boss: 'Bosworth', indent: 3 },
+  { name: 'Richie', boss: 'Zhao', indent: 3 },
+  { name: 'Sofia', boss: 'Zhao', indent: 3 },
+  { name: 'Jen', boss: 'Zhao', indent: 3 },
+  { name: 'Sabrina', boss: 'VanDyck', indent: 3 },
+  { name: 'Michelle', boss: 'VanDyck', indent: 3 },
+  { name: 'Josh', boss: 'VanDyck', indent: 3 },
+  { name: 'Blanch', boss: 'Swain', indent: 3 },
+  { name: 'Tom', boss: 'Swain', indent: 3 },
+  { name: 'Joe', boss: 'Swain', indent: 3 },
+  { name: 'Eddie', boss: 'Goler', indent: 3 },
+  { name: 'Julie', boss: 'Goler', indent: 3 },
+  { name: 'Annie', boss: 'Goler', indent: 3 },
+  { name: 'Rowi', boss: 'Hernandez', indent: 3 },
+  { name: 'Inga', boss: 'Hernandez', indent: 3 },
+  { name: 'Morgan', boss: 'Hernandez', indent: 3 },
+  { name: 'Amy', boss: 'Moissinac', indent: 3 },
+  { name: 'Chuck', boss: 'Moissinac', indent: 3 },
+  { name: 'Vinni', boss: 'Moissinac', indent: 3 },
+  { name: 'Eric', boss: 'Kelley', indent: 3 },
+  { name: 'Ana', boss: 'Kelley', indent: 3 },
+  { name: 'Wes', boss: 'Kelley', indent: 3 }
+];
+
+/* 
+O(n^2) Function is run n number of times with a recursive 
+call happening each iteration until base case is met. 
+*/
+function getOrganize(peopleHierarchy, boss) {
+  peopleHierarchy.filter(people => people.boss === boss).forEach(people => {
+    indent(people.name, people.indent);
+    getOrganize(peopleHierarchy, people.name);
+  });
+}
+
+function indent(name, lvl) {
+  console.log(`${'\t'.repeat(lvl)} ${name}`);
+}
+
+getOrganize(peopleHierarchy, null);
