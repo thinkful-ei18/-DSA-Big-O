@@ -54,3 +54,42 @@ function naiveSearch(array, item) {
     }
   }
 }
+
+/* 
+Create Pairs
+O(n^2) This function performs two for loops, one nested within the other. Causing a 
+performance factor of n^2.  
+*/
+function createPairs(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      console.log(arr[i] + ', ' + arr[j]);
+    }
+  }
+}
+
+/* 
+Computing fibonaccis
+O(n) The main proponent of this function is the for loop, which takes place n number of times.  
+*/
+function generateFib(num) {
+  let result = [];
+  for (let i = 1; i <= num; i++) {
+    // we're adding the first item
+    // to the result list, append the
+    // number 0 to results
+    if (i === 1) {
+      result.push(0);
+    } else if (i == 2) {
+      // ...and if it's the second item
+      // append 1
+      result.push(1);
+    } else {
+      // otherwise, sum the two previous result items, and append that value to results.
+      result.push(result[i - 2] + result[i - 3]);
+    }
+  }
+  // once the for loop finishes
+  // we return `result`.
+  return result;
+}
