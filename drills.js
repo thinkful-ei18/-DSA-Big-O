@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /* Even or odd
 O(1)
 This function takes in a value and performs a single one time calculation 
@@ -7,8 +7,8 @@ mathimatical operation no matter what the given value is.
 */
 function isEven(value) {
   if (value % 2 === 0) {
-    return true
-  } else return false
+    return true;
+  } else return false;
 }
 
 /* Are you here?
@@ -18,13 +18,13 @@ for loop.
 */
 function areYouHere(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
-    const el1 = arr1[i]
+    const el1 = arr1[i];
     for (let j = 0; j < arr2.length; j++) {
-      const el2 = arr2[j]
-      if (el1 === el2) return true
+      const el2 = arr2[j];
+      if (el1 === el2) return true;
     }
   }
-  return false
+  return false;
 }
 
 /* 
@@ -37,9 +37,9 @@ function doubleArrayValues(array) {
   // n times
   for (let i = 0; i < array.length; i++) {
     // 1 time
-    array[i] *= 2
+    array[i] *= 2;
   }
-  return array
+  return array;
 }
 
 /* 
@@ -50,7 +50,7 @@ time. It takes n times to loop through array
 function naiveSearch(array, item) {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === item) {
-      return i
+      return i;
     }
   }
 }
@@ -63,7 +63,7 @@ performance factor of n^2.
 function createPairs(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
-      console.log(arr[i] + ', ' + arr[j])
+      console.log(arr[i] + ', ' + arr[j]);
     }
   }
 }
@@ -73,25 +73,25 @@ Computing fibonaccis
 O(n) The main proponent of this function is the for loop, which takes place n number of times.  
 */
 function generateFib(num) {
-  let result = []
+  let result = [];
   for (let i = 1; i <= num; i++) {
     // we're adding the first item
     // to the result list, append the
     // number 0 to results
     if (i === 1) {
-      result.push(0)
+      result.push(0);
     } else if (i == 2) {
       // ...and if it's the second item
       // append 1
-      result.push(1)
+      result.push(1);
     } else {
       // otherwise, sum the two previous result items, and append that value to results.
-      result.push(result[i - 2] + result[i - 3])
+      result.push(result[i - 2] + result[i - 3]);
     }
   }
   // once the for loop finishes
   // we return `result`.
-  return result
+  return result;
 }
 /* 
 An Efficient Search
@@ -101,24 +101,24 @@ be preserved at the end of operation, so it take half time less every time it re
 
 */
 function efficientSearch(array, item) {
-  let minIndex = 0
-  let maxIndex = array.length - 1
-  let currentIndex
-  let currentElement
+  let minIndex = 0;
+  let maxIndex = array.length - 1;
+  let currentIndex;
+  let currentElement;
 
   while (minIndex <= maxIndex) {
-    currentIndex = Math.floor((minIndex + maxIndex) / 2)
-    currentElement = array[currentIndex]
+    currentIndex = Math.floor((minIndex + maxIndex) / 2);
+    currentElement = array[currentIndex];
 
     if (currentElement < item) {
-      minIndex = currentIndex + 1
+      minIndex = currentIndex + 1;
     } else if (currentElement > item) {
-      maxIndex = currentIndex - 1
+      maxIndex = currentIndex - 1;
     } else {
-      return currentIndex
+      return currentIndex;
     }
   }
-  return -1
+  return -1;
 }
 
 /* 
@@ -127,7 +127,7 @@ function efficientSearch(array, item) {
 */
 
 function findRandomElement(arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 /* 
@@ -138,14 +138,14 @@ function findRandomElement(arr) {
 function isPrime(n) {
   // if n is less than 2 or a decimal, it's not prime
   if (n < 2 || n % 1 != 0) {
-    return false
+    return false;
   }
   // otherwise, check if `n` is divisible by any integer
   // between 2 and n.
   for (let i = 2; i < n; ++i) {
-    if (n % i == 0) return false
+    if (n % i == 0) return false;
   }
-  return true
+  return true;
 }
 
 /*counting sheep
@@ -160,11 +160,11 @@ function isPrime(n) {
 
 function countSheep(sheep) {
   if (sheep === 0) {
-    return
+    return;
   }
 
-  console.log(`${sheep} - Another sheep jump over the fence`)
-  countSheep(sheep - 1)
+  console.log(`${sheep} - Another sheep jump over the fence`);
+  countSheep(sheep - 1);
 }
 
 /*
@@ -175,14 +175,14 @@ O(n) Recursion takes place until base case is true.
 */
 
 function arrDouble(arr) {
-  const len = arr.length
-  if (len === 0) return []
-  return [arr[0] * 2, ...arrDouble(arr.slice(1))]
+  const len = arr.length;
+  if (len === 0) return [];
+  return [arr[0] * 2, ...arrDouble(arr.slice(1))];
 }
 
-countSheep(3)
+countSheep(3);
 
-console.log(arrDouble([1, 2, 3]))
+console.log(arrDouble([1, 2, 3]));
 
 /*
   Reverse String
@@ -194,10 +194,10 @@ O(n) It loop through all cases until it reaches base case.
 
 function reverseString(str) {
   if (str.length < 1) {
-    return ''
+    return '';
   }
 
-  return str[str.length - 1] + reverseString(str.slice(0, -1))
+  return str[str.length - 1] + reverseString(str.slice(0, -1));
 }
 
 /* 
@@ -207,7 +207,44 @@ function reverseString(str) {
 
 function triNum(n) {
   if (n === 0) {
-    return 0
+    return 0;
   }
-  return n + triNum(n - 1)
+  return n + triNum(n - 1);
 }
+
+/* 
+  String Splitter
+  input: str
+  ouput: [s,t,r]
+
+  O(n) until base case of 0 is reached
+*/
+
+const strSplit = str => {
+  if (str.length === 0) return [];
+  return [str[0], ...strSplit(str.slice(1))];
+};
+
+console.log(strSplit('hello'));
+
+/* 
+  Binary Rep
+  input: 1 2 3 4
+  output: 1 10 11 101
+  4 / 2 = 2 ... 0
+  2 / 2 = 1 ... 0
+  1 /2 = 0 ... 1
+
+  O(log n) Recursion takes place less than n amount of because 
+  everytime recursion takes place the number is halfed, depending
+  on remainder of number. For example 4 is recursed 3 times.
+*/
+
+const decToBinary = num => {
+  const q = Math.floor(num / 2);
+  const r = num % 2;
+  if (q === 0) return [r];
+  return [...decToBinary(q), r].join('');
+};
+
+console.log(decToBinary(25));
