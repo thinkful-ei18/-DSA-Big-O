@@ -248,3 +248,31 @@ const decToBinary = num => {
 };
 
 console.log(decToBinary(25));
+
+
+/* 
+  O(n) it recursives n cases until it reach the base case
+*/
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+// console.log(factorial(5));
+
+
+
+/*
+  
+  O(2^n) Every time it recures, the function doubles the amount of recursive calls 
+  until it reaches base case
+*/
+function fibonacci(num) {
+  if (num <= 2) return 1;
+
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+
+// console.log(fibonacci(4));
+
