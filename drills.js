@@ -120,3 +120,12 @@ function efficientSearch(array, item) {
   }
   return -1
 }
+
+/* 
+ Random element
+ O(1)  It takes in the arr and performance one time operation
+*/
+
+function findRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
